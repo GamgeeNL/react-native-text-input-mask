@@ -1,12 +1,18 @@
 apply plugin: 'com.android.library'
 
+def _ext = rootProject.ext
+def _compileSdkVersion = _ext.has('compileSdkVersion') ? _ext.compileSdkVersion : 27
+def _buildToolsVersion = _ext.has('buildToolsVersion') ? _ext.buildToolsVersion : '27.0.3'
+def _minSdkVersion = _ext.has('minSdkVersion') ? _ext.minSdkVersion : 19
+def _targetSdkVersion = _ext.has('targetSdkVersion') ? _ext.targetSdkVersion : 28
+
 android {
-    compileSdkVersion 27
-    buildToolsVersion "27.0.3"
+    compileSdkVersion _compileSdkVersion
+    buildToolsVersion _buildToolsVersion
 
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 27
+        minSdkVersion _minSdkVersion
+        targetSdkVersion _targetSdkVersion
         versionCode 1
         versionName "1.0"
     }
@@ -18,6 +24,6 @@ android {
 }
 
 dependencies {
-    compile 'com.facebook.react:react-native:+'
-    compile 'com.redmadrobot:inputmask:2.3.0'
+    api 'com.facebook.react:react-native:+'
+    implementation 'com.redmadrobot:inputmask:2.3.0'
 }
